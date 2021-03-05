@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>List of Students</title>
+
+<style>
+body {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+section {
+	padding: 10px;
+	outline: 2px solid #D4AC0D;
+}
+
+h3 {
+	background-color: #D4AC0D;
+	margin-top: 0px;
+	margin-bottom: 15px;
+}
+table, th, td {
+  border: 1px solid #D4AC0D;
+}
+
+th, td {
+  padding: 10px;
+}
+
+</style>
+</head>
+<body
+	style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
+	<section>
+		<h3>List of students</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${students.empty}">
+					<td colspan="2">No Students Available</td>
+				</tr>
+				<tr th:each="student : ${students}">
+					<td><span th:text="${student.id}"> </span></td>
+					<td><span th:text="${student.name}"> </span></td>
+					<td><span th:text="${student.email}"> </span></td>
+					<td><button id="deleteBtn" type="submit">Delete</button>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+</body>
+</html>

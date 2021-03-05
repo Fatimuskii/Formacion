@@ -12,7 +12,7 @@ public class StudentClient {
     @Size(min=3, max=50)
     private String name;
     @NotNull
-    @Email(message="{invalid.email}")
+    @Email(message="Invalid email")
     private String email;
     @NotNull
     @Size(min=6, max=50)

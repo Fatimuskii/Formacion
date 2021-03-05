@@ -1,5 +1,8 @@
 package com.formacion.practica4MVC.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,9 +33,9 @@ public class StudentController {
 		return "editPage";
 	}
 
-	// Method that receives a student  from the view
+	// Method that receives a student from the view
 	@PostMapping("/editInformation")
-	public ModelAndView handleRegistration(@Valid StudentClient student, BindingResult result) {
+	public ModelAndView handleRegistration(@ModelAttribute("student") @Valid StudentClient student, BindingResult result) {
 		// logger.debug("Registering Student : "+ student);
 
 		ModelAndView mav = new ModelAndView();
@@ -39,9 +43,10 @@ public class StudentController {
 		validator.validateEdition(student, result);
 		if (result.hasErrors()) {
 			mav.addObject("student", student);
-			mav.setViewName("registration");
+			System.out.println("Student not in database. Check email");
+			mav.setViewName("editPage");
 		} else {
-			// updates the name of the student 
+			// updates the name of the student
 			// Inizialize new Student class (entity)
 
 			Student studentUpdated = studentRepo.findByEmail(student.getEmail());
@@ -50,9 +55,19 @@ public class StudentController {
 			studentRepo.save(studentUpdated);
 			mav.addObject("student", studentUpdated);
 			// We send the data to a new view
-			mav.setViewName("userInformation");
+			mav.setViewName("updatesuccess");
 		}
 
 		return mav;
+	}
+
+	// Method that shows the edit view
+	@GetMapping("/list")
+	public String listStudents(Model model) {
+		Iterable<Student> iterable = studentRepo.findAll();
+		List<Student> list = new ArrayList<>();
+		iterable.forEach(list::add);
+		model.addAttribute("students", list);
+		return "list";
 	}
 }

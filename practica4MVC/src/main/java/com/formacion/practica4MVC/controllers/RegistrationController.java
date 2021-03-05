@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,11 +33,11 @@ public class RegistrationController {
 
 	//Method that receives a student form from the view
 	@PostMapping("/registration")
-	public ModelAndView handleRegistration(@Valid StudentClient student, BindingResult result) {
+	public ModelAndView handleRegistration(@ModelAttribute("student") @Valid StudentClient student, BindingResult result) {
 		// logger.debug("Registering Student : "+ student);
 
 		ModelAndView mav = new ModelAndView();
-
+		
 		validator.validate(student, result);
 		if (result.hasErrors()) {
 
@@ -49,8 +50,8 @@ public class RegistrationController {
 			newStudent.setName(student.getName());
 			newStudent.setEmail(student.getEmail());
 			newStudent.setPassword(student.getPassword());
-			
 			studentRepo.save(newStudent);
+			
 			mav.addObject("student", student);
 			//We send the data to a new view
 			mav.setViewName("registrationsuccess");
