@@ -70,4 +70,34 @@ public class StudentController {
 		model.addAttribute("students", list);
 		return "list";
 	}
+	
+	/*
+	 * @RequestMapping(value = "/share", method = RequestMethod.POST)
+    public ResponseEntity<Object> share(@RequestParam String email) {​​​​​​
+        if (email!=null) {​​​​​​
+            System.out.println("Sending email to: " + email);
+            return new ResponseEntity<Object>(HttpStatus.OK);
+        }​​​​​​
+        return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+ 
+    }​​​​​​
+
+//    @RequestMapping(value = "/share", method = RequestMethod.POST)
+//    public ResponseEntity<Object> share(@RequestParam Map<String, String> form) {​​​​​​
+//        if (form.containsKey("email")) {​​​​​​
+//            System.out.println("Sending email to: " + form.get("email"));
+//            return new ResponseEntity<Object>("Sending email to: " + form.get("email"),HttpStatus.OK);
+//        }​​​​​​
+//        return new ResponseEntity<Object>("Email not found",HttpStatus.BAD_REQUEST);
+//    }​​​​​​
+ 
+        
+//        @RequestMapping(value = "/share", method = RequestMethod.POST,consumes=MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+//        public ResponseEntity<Object> share(Form form) {​​​​​​
+//            if (form.getEmail()!=null) {​​​​​​
+//                System.out.println("Sending email to: " + form.getEmail());
+//                return new ResponseEntity<Object>("Sending email to: " + form.getEmail(),HttpStatus.OK);
+//            }​​​​​​
+//            return new ResponseEntity<Object>("Email not found",HttpStatus.BAD_REQUEST);
+//        }​​​​​​*/
 }

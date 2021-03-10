@@ -76,17 +76,16 @@ public class ExperienceController {
 
 	}*/
 	
-	@RequestMapping(value = "work/sendEmail", method = RequestMethod.POST, produces = "application/json")
+	/*@RequestMapping(value = "work/sendEmail", method = RequestMethod.POST, produces = "application/json")*/
+	@RequestMapping(value = "work/sendEmail", method = RequestMethod.POST)
 	@CrossOrigin(origins = { "http://localhost:8080", "http://127.0.0.1:5500" })
 	public ResponseEntity<Object> emailRequest(@RequestBody String object) {
-
-		if(object!= null) {
+		if(object!= null && !object.isBlank() && !object.equals("empty")) {
 			System.out.println("Email received -> " + object);
 			return new ResponseEntity<Object>("Email received sucesfully", HttpStatus.OK);
 		}
 		else 
 			return new ResponseEntity<Object>("Error", HttpStatus.OK);
-
 	}
 	
 	

@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         /** Evitamos el envio cuando damos al submit */
         event.preventDefault();
         sendEmailByFetch(event);
-        showMessage("mensajito!")
     });
 
 });
@@ -20,18 +19,24 @@ function sendEmailByFetch(e) {
     e.preventDefault()
     e.stopPropagation()
     const email = document.getElementById('email').value
-    const key = "email";
-    //const password = document.getElementById('password').value
-    var sendObject = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ key, email })
+    if (email != "") {
+        //const password = document.getElementById('password').value
+        var sendObject = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email })
+        }
+
+        console.log("objecto to send: ", sendObject);
+        fetch(urlPost, sendObject)
+            .then(data => data.text())
+            .then(text => alert(text));
+    } else {
+        alert("Please write an email");
     }
 
-    console.log("objecto to send: ", sendObject);
-    fetch(urlPost, sendObject);
 
 }
 

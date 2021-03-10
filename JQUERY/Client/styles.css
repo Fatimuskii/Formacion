@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    /*border: 1px solid red;*/
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    background-color: #666;
+}
+
+header {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    background-color: #ac7ebe;
+}
+
+img {
+    height: 160px;
+    width: 160px;
+    border: 2px solid white;
+    box-shadow: 3px 3px 13px #561370;
+}
+
+#info {
+    margin: 30px;
+}
+
+#photo {
+    margin: 20px;
+    align-self: center;
+}
+
+body {
+    /*Dimensiones de A4*/
+    /*---- FLEX PROPERTIES ------ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dinA4 {
+    height: 297mm;
+    width: 210mm;
+    background-color: antiquewhite;
+    align-self: center;
+}
+
+ul {
+    margin: 20px;
+}
+
+#education>ul>li {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+table {
+    margin: 10px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 75%;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solig black;
+}
+
+th {
+    background-color: #9020BD;
+    color: black;
+}
+
+tr:nth-child(even) {
+    background-color: #CE72F2
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    font-style: italic;
+    color: brown;
+}
+
+
+/* ----- SECTIONS ------ */
+
+#education {
+    margin: 30px;
+}
+
+#technicalSkills {
+    margin: 30px;
+}
+
+#experienceSummary {
+    margin: 30px;
+}
+
+#profesionalExperience {
+    margin: 30px;
+}
+
+#languages {
+    margin-left: 30px;
+    align-self: baseline;
+}
+
+#languageTable {
+    width: 40%;
+}
+
+#contact {
+    margin-left: 25%;
+    margin-top: 30px;
+}
+
+#contactForm {
+    border: 2px solid purple;
+    padding: 10px;
+}
+
+#contactAndLanguages {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+}
