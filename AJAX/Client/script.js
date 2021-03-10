@@ -24,14 +24,13 @@ function normalNameSet(x) {
 }
 
 /*-------------------------Peticion AJAX -----------*/
-
+/** http request  */
 function getWorkExperience() {
     let request = new XMLHttpRequest();
     let works = [];
     request.open('GET', 'http://localhost:8080/work/');
     request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            //document.getElementById("demo").innerHTML = this.responseText;
             if (this.responseText) {
                 works = JSON.parse(this.responseText);
                 console.log("json parse: ", works);
@@ -39,21 +38,18 @@ function getWorkExperience() {
                 let table = document.getElementById("expericeTable");
                 let body = table.getElementsByTagName('tbody')[0];
                 for (let i = 0; i < works.length; ++i) {
-
+                    // Create row
                     let newRow = body.insertRow();
-                    /** Create td */
-                    var year = newRow.insertCell();
-                    var company = newRow.insertCell();
-                    var job = newRow.insertCell();
+                    // Create td filling with proper data
+                    let year = newRow.insertCell();
+                    let company = newRow.insertCell();
+                    let job = newRow.insertCell();
                     year.appendChild(document.createTextNode(works[i].year));
                     company.appendChild(document.createTextNode(works[i].company));
                     job.appendChild(document.createTextNode(works[i].job));
-
                 }
 
             }
-
-
         }
     };
     request.send();

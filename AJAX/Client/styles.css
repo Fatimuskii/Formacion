@@ -110,9 +110,26 @@ a:hover {
 }
 
 #languages {
-    margin: 30px;
+    margin-left: 30px;
+    align-self: baseline;
 }
 
 #languageTable {
     width: 40%;
+}
+
+#contact {
+    margin-left: 25%;
+    margin-top: 30px;
+}
+
+#contactForm {
+    border: 2px solid purple;
+    padding: 10px;
+}
+
+#contactAndLanguages {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
 }
