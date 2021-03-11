@@ -1,0 +1,63 @@
+<p>heroes works!</p>
+<!--<h2>{{hero}}</h2>-->
+
+
+
+<!--<h3> {{hero.name}} Details </h3> -->
+<!-- Using uppercasePipe-->
+
+<!--<h2>{{hero.name | uppercase}} Details</h2>-->
+
+<!--
+<div><span>id: </span>{{hero.id}}</div>
+<div><span>name: </span>{{hero.name}}</div>-->
+<!---
+<div>
+    <label for="name">Hero name: </label>
+    <input id="name" [(ngModel)]="hero.name" placeholder="name">
+</div>
+-->
+<h3> List of heroes</h3>
+
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <!-- That shows one hero. 
+    <li>
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+    -->
+    <!--To list them all: *ngFor to iterate through the list of heroes:
+    NOTE: Don't forget the asterisk (*) in front of ngFor. It's a critical part of the syntax.
+    - click event (click): This is an example of Angular's event binding syntax.
+    - [class.some-css-class]="some-condition" -> class binding can add and remove a CSS class conditionally    
+    When the current row hero is the same as the selectedHero, Angular adds the selected CSS class. When the two heroes are different, Angular removes the class.
+    -->
+    <!--
+    <li *ngFor="let hero of heroes" 
+    [class.selected]="hero === selectedHero" 
+    (click)="onSelect(hero)">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>-->
+    <li *ngFor="let hero of heroes">
+        <a routerLink="/detail/{{hero.id}}">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+        </a>
+        <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
+    </li>
+
+</ul>
+
+<div>
+    <label id="new-hero">Hero name: </label>
+    <input for="new-hero" #heroName />
+
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button class="add-button" (click)="add(heroName.value); heroName.value=''">
+      Add hero
+    </button>
+
+
+
+</div>
+
+<!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
