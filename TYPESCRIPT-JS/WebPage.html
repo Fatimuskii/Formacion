@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TypeScript PoC. TypeScript for dummies...</title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        console.log("Static page content. Loading...");
+    </script>
+
+    <h1>WELCOME TO TYPESCRIPT!</h1>
+    <h2>This web site has been designed as a laboratory to learn. Typescript, and maybe some other things...</h2>
+    <h3>The aim is to implement different technological solutions that permits you to incrementally learn the singularities of typescript.</h3>
+
+    <h3>Menu</h3>
+
+    <!--
+      <script type="text/typescript">
+        module ServerCode {
+            export { SayHello } from './index';
+        }
+      </script>
+      <script type="text/typescript">
+        ServerCode.SayHello();
+      </script>
+      -->
+
+    <!-- Example. Script 01. -->
+    <script type="text/javascript">
+        console.log("Script 01. This is a Javascript script.");
+    </script>
+
+    <!-- Example. Script 02. -->
+    <script type="text/typescript">
+        console.log("Script 02. This is a Typescript script."); class LabGreeter { greeting: string; constructor (message: string) { this.greeting = message; } greet() { return "Hello, " + this.greeting + "."; } } console.log("Script 02. " + new LabGreeter("welcome
+        to the first lab in this Typescript's PoC Web Site.").greet() )
+    </script>
+
+    <!-- Example. Script 03. -->
+    <script type="text/typescript">
+        console.log("Script 03. This is a Typescript script."); console.log("Script 03. This one is empty. But... could be full of code. Typescript!");
+    </script>
+
+    <!-- Example. Script 04. -->
+    <script type="text/typescript" src="TypescriptPoC_01_ScriptExample04.ts"></script>
+
+    <!-- Example. Script 05. -->
+    <script type="text/typescript">
+        console.log("Script 05. This is a Typescript script."); console.log("Script 05. Registering DOMContentLoaded event listener..."); document.addEventListener('DOMContentLoaded', (event) => { var Method_ = "DOM Content. Loaded event."; var HTMLDivE :HTMLDivElement;
+        console.log(Method_); } ); console.log("Script 05. Registered.");
+    </script>
+
+    <!-- Example. Script 06. -->
+    <script type="module">
+        console.log("Script 06. This is our first module.");
+    </script>
+
+    <script src="https://rawgit.com/Microsoft/TypeScript/master/lib/typescriptServices.js"></script>
+    <script src="https://rawgit.com/basarat/typescript-script/master/transpiler.js"></script>
+
+    <!--
+      <script src="https://cdn.jsdelivr.net/gh/Microsoft/TypeScript@master/lib/typescriptServices.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/basarat/typescript-script@master/transpiler.js"></script>"
+      -->
+
+    <script type="text/javascript">
+        console.log(this);
+        console.log("Static page content. Loaded.");
+    </script>
+</body>
+
+</html>

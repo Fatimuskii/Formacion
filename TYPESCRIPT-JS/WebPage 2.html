@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PoC Project. TypeScript.</title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      console.log("Static page content. Loading...");
+    </script>
+
+<h1>WELCOME TO TYPESCRIPT!</h1>
+<h2>This web site has been designed as a laboratory to learn. Typescript, and maybe some other things...</h2>
+<h3>The aim is to implement different technological solutions that permits you to incrementally learn the singularities of typescript.</h3>
+
+<h3>Menu</h3>
+
+
+    <!-- Module defined in this script -->
+    <script type="text/typescript">
+      module ClientCode {
+
+          export class Greeter {
+              greeting: string;
+              constructor (message: string) {
+                  this.greeting = message;
+              }
+              greet() {
+                  return "Hello, " + this.greeting + ".";
+              }
+          }
+      }
+    </script>
+
+    
+    <!-- Example 02: Static module loader... -->
+    <script type="module" src="./out/TypescriptPoC_02.js"></script>
+    <script type="module">
+      console.log("Static script. ");
+
+      import {SayHello} from './out/TypescriptPoC_02.js';
+      //Call to SayHello() moved to last line of module code.
+      SayHello();
+      console.log("Static script. ");
+    </script>
+
+    <!-- Example 03: Dynamic module loader... -->
+    <!--
+    <script type="module">
+      (async () => {
+        const moduleSpecifier = './out/TypescriptPoC_01.js';
+        const {SayHello} = await import(moduleSpecifier);
+        SayHello();
+      })();
+    </script>
+    -->
+
+    <!-- Example 04: -->
+    <!--  
+    <script type="text/typescript">
+
+        console.log("Script 04. Typescript script. ");
+
+        //import {SayHello} from './out/TypescriptPoC_01.js';
+
+        var greeter = new ClientCode.Greeter('SierrasD');
+        var button :HTMLButtonElement;
+
+        button = document.createElement('button');
+        button.id = "ClientSideCode";
+        button.innerHTML = "Typescript in the client."
+        button.onclick = function() {
+        button.onclick = function() {
+          console.log(greeter.greet() + ".\nWelcome to Typescript Scripts compiled at the client.");
+        }
+        document.body.appendChild(button)
+
+        button = document.createElement('button');
+        button.id = "ServerSideCode";
+        button.innerHTML = "Typescript from the server."
+        button.onclick = function() {
+          console.log(greeter.greet() + ".\nWelcome to Typescript Scripts compiled at the server.");
+          //Welcome(); //Error! Function not yet available. Module has not been loaded. 
+        }
+        document.body.appendChild(button)
+
+    </script>
+
+    <script type="module" src="./out/TypescriptPoC_02.js"></script>
+    <script type="module">
+      import {Welcome} from './out/index.js';
+
+      let btn = document.getElementById("ClientSideCode");
+      btn.addEventListener("click", (e) => Welcome());
+    </script>
+    -->
+    
+    <script src="https://rawgit.com/Microsoft/TypeScript/master/lib/typescriptServices.js"></script>
+    <script src="https://rawgit.com/basarat/typescript-script/master/transpiler.js"></script>
+
+    <script type="text/javascript">
+      console.log("Static page content. Loaded.");
+    </script>
+
+  </body>
+</html>
