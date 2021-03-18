@@ -1,5 +1,5 @@
 <div [hidden]="submitted" class="form-group">
-    <label for="power">Hero Power</label>
+    <h1 for="power">Hero Power</h1>
 
     <!--The heroForm template variable is now a reference to the NgForm directive instance that governs the form as a whole.-->
     <!--<form #heroForm="ngForm">-->
@@ -20,7 +20,12 @@
 
         <div class="form-group">
             <label for="alterEgo">Alter Ego</label>
-            <input type="text" class="form-control" id="alterEgo" [(ngModel)]="model.alterEgo" name="alterEgo">
+            <input type="text" class="form-control" id="alterEgo" required [(ngModel)]="model.alterEgo" name="alterEgo" #alterEgo="ngModel">
+
+            <div [hidden]="alterEgo.valid || alterEgo.pristine" class="alert alert-danger">
+                AlterEgo is required
+            </div>
+
         </div>
 
         <div class="form-group">
@@ -32,7 +37,7 @@
 
         <!--<button type="button" class="btn btn-default" (click)="newHero()">New Hero</button>-->
         <!-- Reset: The input box its no longer pristine. The form remembers that you entereed a name before clicking New Hero-->
-        <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero</button>
+        <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">Reset</button>
         <!--<button type="submit" class="btn btn-success">Submit</button>-->
         <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
 
